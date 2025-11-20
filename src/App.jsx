@@ -1,5 +1,7 @@
+import React from "react";
 import { useState } from "react";
 import Switch from "@mui/material/Switch";
+import Header from "../src/components/Header";
 import "./App.css";
 
 const App = () => {
@@ -22,7 +24,7 @@ const App = () => {
     permanentAddress: "",
     course: "",
     heardFrom: "",
-    role: "",
+    role: "student",
   });
 
   function handleChange(e) {
@@ -70,6 +72,7 @@ const App = () => {
   return (
 
     <>
+      <Header />
       <form >
         <div className="form-group-1">
           <div className="section-header">Personal Details</div>
@@ -145,54 +148,94 @@ const App = () => {
 
         <div className="form-group-4">
           <div className="section-header">Educational Details</div>
-          <div className="edu-label">Are you a:</div>
 
-          <div style={{ display: "flex", gap: "25px" }}>
-            <label>
-              <input
-                type="radio"
-                name="role"
-                value="student"
-                checked={formData.role === "student"}
-                onChange={handleChange}
-              />
-              Student
-            </label>
+          {/* ----- ROW: Are you a ----- */}
+          <div className="row edu-row">
+            <div className="label">Are you a:</div>
 
-            <label>
-              <input
-                type="radio"
-                name="role"
-                value="professional"
-                checked={formData.role === "professional"}
-                onChange={handleChange}
-              />
-              Working Professional
-            </label>
+            <div className="role-row">
+              <label>
+                <input
+                  type="radio"
+                  name="role"
+                  value="student"
+                  checked={formData.role === "student"}
+                  onChange={handleChange}
+                />
+                Student
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="role"
+                  value="professional"
+                  checked={formData.role === "professional"}
+                  onChange={handleChange}
+                />
+                Working Professional
+              </label>
+            </div>
           </div>
-          {formData.role === "student" &&
 
-            <div><label>Last Attained Qualification</label><input type="text" placeholder="Enter your qualification" />
-              <label>Year</label>
-              <input type="text" placeholder="Enter your completeion year" />
-              <label>College / University</label>
-              <input type="text" placeholder="College / University" />
-            </div>}
+          {/* ----- STUDENT FIELDS ----- */}
+          {formData.role === "student" && (
+            <div className="edu-fields-wrapper">
+              <div className="row">
+                <div className="label">Last Attained Qualification</div>
+                <div className="field">
+                  <input type="text" placeholder="Enter your qualification" />
+                </div>
+              </div>
 
-          {formData.role === "professional" && <div>
-            <label>Designation</label><input type="text" placeholder="Enter your designation" />
-            <label>Company</label><input type="text" placeholder="Enter your comapany name" />
-          </div>}
+              <div className="row">
+                <div className="label">Year</div>
+                <div className="field">
+                  <input type="text" placeholder="Enter your completion year" />
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="label">College / University</div>
+                <div className="field">
+                  <input type="text" placeholder="College / University" />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ----- PROFESSIONAL FIELDS ----- */}
+          {formData.role === "professional" && (
+            <div className="edu-fields-wrapper">
+              <div className="row">
+                <div className="label">Designation</div>
+                <div className="field">
+                  <input type="text" placeholder="Enter your designation" />
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="label">Company</div>
+                <div className="field">
+                  <input type="text" placeholder="Enter your company name" />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-
 
         <div className="form-group-5">
           <div className="section-header">Course Details</div>
 
+          {/* ----- COURSE SELECT ROW ----- */}
           <div className="row">
             <div className="label">Course</div>
             <div className="field">
-              <select name="course" value={formData.course} onChange={handleChange}>
+              <select
+                name="course"
+                value={formData.course}
+                onChange={handleChange}
+              >
                 <option value="">Select a course</option>
                 <option value="advanced-java">Advanced Java</option>
                 <option value="android">Android</option>
@@ -206,28 +249,27 @@ const App = () => {
                 <option value="php">PHP</option>
                 <option value="python">Python</option>
                 <option value="react">React JS</option>
-                <option value="python">Python</option>
-                <option value="web-design">web-design</option>
+                <option value="web-design">Web Design</option>
                 <option value="other-course">Other Course</option>
               </select>
             </div>
           </div>
-            {formData.course==="other-course" && <div><label>Enter your course</label><input type="text" placeholder="Enter the course name" /></div>}
 
-          {/* <div className="row">
-          <div className="label">How did you come to know about us?</div>
-          <div className="field radio-row">
-            {["Google", "Linkedin", "Instagram", "College TPO", "Friend"].map(x => (
-              <label key={x}><input type="radio" name="heardFrom" value={x}
-                checked={formData.heardFrom === x} onChange={handleChange} /> {x}</label>
-            ))}
-          </div>
-        </div> */}
+          {/* ----- ENTER COURSE (IF OTHER COURSE) ----- */}
+          {formData.course === "other-course" && (
+            <div className="row">
+              <div className="label">Enter your course</div>
+              <div className="field">
+                <input type="text" placeholder="Enter the course name" />
+              </div>
+            </div>
+          )}
+
+          {/* ----- HOW DID YOU KNOW ABOUT US ----- */}
           <div className="row">
-            <div className="label">How did you come to know about us?</div>
+            <div className="label">How did you come to<br />know about us?</div>
 
-            <div className="field radio-row">
-
+            <div className="field radio-row course-radio-row">
               <label>
                 <input
                   type="radio"
@@ -282,13 +324,18 @@ const App = () => {
                 />
                 Friend
               </label>
-
             </div>
           </div>
-          {formData.heardFrom === "Friend" && <div><label>Friend's Name:</label><input type="text" placeholder="Enter your friend's name" /></div>}
 
+          {formData.heardFrom === "Friend" && (
+            <div className="row">
+              <div className="label">Friend's Name</div>
+              <div className="field">
+                <input type="text" placeholder="Enter your friend's name" />
+              </div>
+            </div>
+          )}
         </div>
-
 
 
         {/* <Switch
@@ -298,15 +345,22 @@ const App = () => {
         />
         <p>By clicking submit, you agree to our <span>Terms & Conditions</span></p> */}
         {/* <button onClick={submitForm}>Register</button> */}
-        <Switch checked={switchOn} onChange={handleSwitch} />
-        <p>
-          By clicking submit, you agree to our <span>Terms & Conditions</span>
-        </p>
+        {/* Terms & Conditions Switch */}
+        <div className="terms-row">
+          <Switch checked={switchOn} onChange={handleSwitch} />
+          <p>
+            By clicking submit, you agree to our <span>Terms & Conditions</span>
+          </p>
+        </div>
 
         {/* REGISTER BUTTON */}
-        <button disabled={!isAgreed} className={!isAgreed ? "disabled-btn" : ""}>
+        <button
+          disabled={!isAgreed}
+          className={`register-btn ${!isAgreed ? "disabled-btn" : ""}`}
+        >
           Register
         </button>
+
 
         {/* ---------- TERMS POPUP ---------- */}
         {showPopup && (
@@ -353,3 +407,5 @@ const App = () => {
 };
 
 export default App;
+
+

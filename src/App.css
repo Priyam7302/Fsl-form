@@ -1,5 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body,
+* {
+    font-family: "Poppins", sans-serif !important;
+}
 /* ---------- FORM CARD ---------- */
-
 .form-group-1,
 .form-group-2,
 .form-group-3,
@@ -14,7 +23,6 @@
 }
 
 /* ---------- SECTION HEADER ---------- */
-
 .section-header {
     background: #f7f7f7;
     padding: 18px 22px;
@@ -25,21 +33,18 @@
 }
 
 /* ---------- ROW LAYOUT ---------- */
-
 .row {
     display: flex;
-    padding: 22px 22px;
+    padding: 22px;
     border-bottom: 1px solid #ececec;
     align-items: center;
 }
 
-/* Last row no border */
 .row:last-child {
     border-bottom: none;
 }
 
-/* ---------- COLUMN LEFT (LABEL) ---------- */
-
+/* ---------- LABEL COLUMN ---------- */
 .label {
     width: 260px;
     font-size: 17px;
@@ -47,14 +52,12 @@
     line-height: 1.4;
 }
 
-/* ---------- COLUMN RIGHT (FIELD) ---------- */
-
+/* ---------- FIELD COLUMN ---------- */
 .field {
     flex: 1;
 }
 
 /* ---------- INPUTS ---------- */
-
 input,
 select,
 textarea {
@@ -63,9 +66,9 @@ textarea {
     font-size: 16px;
     border-radius: 8px;
     border: 1px solid #dcdcdc;
-    outline: none;
-    transition: 0.2s;
     background: white;
+    outline: none;
+    transition: 0.2s ease;
 }
 
 input:focus,
@@ -76,22 +79,22 @@ textarea:focus {
 }
 
 /* ---------- RADIO BUTTONS ---------- */
-
 input[type="radio"] {
     accent-color: #1976d2;
-    width: 18px;
-    height: 18px;
-    margin-right: 6px;
+    width: 17px;
+    height: 17px;
 }
 
 .gender-group label,
 .radio-row label {
     margin-right: 30px;
     font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 /* ---------- PREVIEW IMAGE ---------- */
-
 .preview-img {
     width: 120px;
     margin-top: 10px;
@@ -100,7 +103,6 @@ input[type="radio"] {
 }
 
 /* ---------- RESPONSIVE ---------- */
-
 @media (max-width: 768px) {
     .row {
         flex-direction: column;
@@ -108,12 +110,12 @@ input[type="radio"] {
     }
 
     .label {
-        margin-bottom: 8px;
         width: 100%;
+        margin-bottom: 8px;
     }
 }
 
-/* ================= POPUP OVERLAY ================= */
+/* ---------- POPUP ---------- */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -121,16 +123,13 @@ input[type="radio"] {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.45);
-    /* dark background */
     display: flex;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(2px);
     z-index: 999;
-    /* ensure top layer */
 }
 
-/* ================= POPUP BOX ================= */
 .popup-box {
     width: 520px;
     background: white;
@@ -140,7 +139,6 @@ input[type="radio"] {
     animation: popIn 0.2s ease-out;
 }
 
-/* Popup animation */
 @keyframes popIn {
     from {
         transform: scale(0.92);
@@ -153,7 +151,6 @@ input[type="radio"] {
     }
 }
 
-/* ================= HEADER ================= */
 .popup-header {
     display: flex;
     justify-content: space-between;
@@ -161,7 +158,6 @@ input[type="radio"] {
 }
 
 .popup-header h2 {
-    margin: 0;
     font-size: 22px;
     font-weight: 600;
 }
@@ -173,7 +169,6 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-/* ================= CONTENT ================= */
 .popup-box p {
     font-size: 16px;
     margin: 8px 0;
@@ -186,7 +181,6 @@ input[type="radio"] {
     font-weight: 600;
 }
 
-/* ================= BUTTONS ================= */
 .popup-actions {
     margin-top: 25px;
     display: flex;
@@ -194,24 +188,22 @@ input[type="radio"] {
     gap: 12px;
 }
 
-.agree-btn {
+.agree-btn,
+.close-gray {
     padding: 10px 18px;
-    background: #0B8A3D;
-    color: white;
     border: none;
     border-radius: 6px;
+    color: white;
     cursor: pointer;
     font-size: 15px;
 }
 
+.agree-btn {
+    background: #0b8a3d;
+}
+
 .close-gray {
-    padding: 10px 18px;
     background: #6e6e6e;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
 }
 
 .agree-btn:hover {
@@ -222,8 +214,170 @@ input[type="radio"] {
     background: #555;
 }
 
-/* Disabled register button */
 .disabled-btn {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+/* ---------- HEADER ---------- */
+.header,
+.header-nav a,
+.login-btn {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Header container */
+.header {
+    width: 100%;
+    height: 85px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    font-weight: 600;
+}
+
+/* Logo */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 62px;
+    width: 62px;
+    object-fit: contain;
+}
+
+/* Navigation */
+.header-nav {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #ff6c37;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    transition: 0.3s ease;
+}
+
+.header-nav a:hover {
+    color: #ff8a5e;
+}
+
+/* Login button */
+.login-btn {
+    background: #ff6c37;
+    color: white;
+    border: 3px solid #000;
+    border-radius: 14px;
+    padding: 8px 22px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    background: #ff8a5e;
+}
+
+/* ---------- EDUCATIONAL DETAILS ---------- */
+.edu-row {
+    display: flex;
+    align-items: center;
+    padding: 22px;
+    border-bottom: 1px solid #ececec;
+}
+
+.role-row {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+}
+
+.role-row label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/* ---------- COURSE DETAILS ---------- */
+.course-radio-row {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.course-radio-row label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+}
+
+.form-group-5 .label {
+    align-items: center;
+    line-height: 1.4;
+}
+
+/* ---------- REGISTER BUTTON ---------- */
+.register-btn {
+    width: 100%;
+    background: #5fa8ff;
+    color: white;
+    border: none;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+.register-btn:hover {
+    background: #4e96ee;
+}
+
+.register-btn.disabled-btn {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Switch + T&C row */
+.terms-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.terms-row p {
+    font-size: 16px;
+    color: #333;
+}
+
+.terms-row span {
+    color: #0055ff;
+    font-weight: 600;
+    cursor: pointer;
 }
