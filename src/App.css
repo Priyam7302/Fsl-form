@@ -1,0 +1,229 @@
+/* ---------- FORM CARD ---------- */
+
+.form-group-1,
+.form-group-2,
+.form-group-3,
+.form-group-4,
+.form-group-5 {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin: 25px 0;
+    background: #fff;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ---------- SECTION HEADER ---------- */
+
+.section-header {
+    background: #f7f7f7;
+    padding: 18px 22px;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px 10px 0 0;
+}
+
+/* ---------- ROW LAYOUT ---------- */
+
+.row {
+    display: flex;
+    padding: 22px 22px;
+    border-bottom: 1px solid #ececec;
+    align-items: center;
+}
+
+/* Last row no border */
+.row:last-child {
+    border-bottom: none;
+}
+
+/* ---------- COLUMN LEFT (LABEL) ---------- */
+
+.label {
+    width: 260px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* ---------- COLUMN RIGHT (FIELD) ---------- */
+
+.field {
+    flex: 1;
+}
+
+/* ---------- INPUTS ---------- */
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    outline: none;
+    transition: 0.2s;
+    background: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #9ad1ff;
+    box-shadow: 0 0 0 4px rgba(154, 209, 255, 0.3);
+}
+
+/* ---------- RADIO BUTTONS ---------- */
+
+input[type="radio"] {
+    accent-color: #1976d2;
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+}
+
+.gender-group label,
+.radio-row label {
+    margin-right: 30px;
+    font-size: 16px;
+}
+
+/* ---------- PREVIEW IMAGE ---------- */
+
+.preview-img {
+    width: 120px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .label {
+        margin-bottom: 8px;
+        width: 100%;
+    }
+}
+
+/* ================= POPUP OVERLAY ================= */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    /* dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    z-index: 999;
+    /* ensure top layer */
+}
+
+/* ================= POPUP BOX ================= */
+.popup-box {
+    width: 520px;
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    animation: popIn 0.2s ease-out;
+}
+
+/* Popup animation */
+@keyframes popIn {
+    from {
+        transform: scale(0.92);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ================= HEADER ================= */
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* ================= CONTENT ================= */
+.popup-box p {
+    font-size: 16px;
+    margin: 8px 0;
+    color: #444;
+}
+
+.popup-box h3 {
+    margin-top: 10px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+/* ================= BUTTONS ================= */
+.popup-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.agree-btn {
+    padding: 10px 18px;
+    background: #0B8A3D;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.close-gray {
+    padding: 10px 18px;
+    background: #6e6e6e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.agree-btn:hover {
+    background: #066e31;
+}
+
+.close-gray:hover {
+    background: #555;
+}
+
+/* Disabled register button */
+.disabled-btn {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
